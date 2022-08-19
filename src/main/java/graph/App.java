@@ -122,12 +122,15 @@ public class App extends JApplet {
 //		radialLayout.setSize(new Dimension(900, 900));
 		vv = new VisualizationViewer<>(layout, new Dimension(600, 600));
 		vv.setBackground(Color.white);
-		vv.getRenderContext().setEdgeShapeTransformer(EdgeShape.quadCurve(graph));
 		vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
 		VertexLabelAsShapeRenderer<String, Integer> vlasr = new VertexLabelAsShapeRenderer<>(vv.getRenderContext());
 		vv.getRenderContext().setVertexShapeTransformer(vlasr);
 		vv.getRenderer().setVertexRenderer(new GradientVertexRenderer<String, Integer>(Color.white, Color.white, true));
 		vv.getRenderer().setVertexLabelRenderer(vlasr);
+		vv.getRenderContext().setVertexDrawPaintTransformer(new InOutVertexPaintTransformer<String, Integer>(graph,
+				vv.getPickedVertexState(), Color.black, Color.red, Color.green));
+		vv.getRenderContext()
+				.setVertexLabelRenderer(new InOutVertexLabelRenderer<Integer>(Color.blue, Color.red, Color.green));
 
 		vv.getRenderContext().setEdgeDrawPaintTransformer(new InOutEdgePaintTransformer<String, Integer>(graph,
 				vv.getPickedVertexState(), Color.black, Color.red, Color.cyan));

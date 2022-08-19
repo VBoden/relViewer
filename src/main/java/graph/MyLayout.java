@@ -105,7 +105,7 @@ public class MyLayout<V, E> extends AbstractLayout<V, E> {
 			int startLine = size.width / 2 - interval * v.size() / 2;
 			for (V vertex : v) {
 //				setLocation(vertex, size.width / 2 + 50 * j / 2 * getSign(j), 50 + 150 * i + 30*(j%5));
-				setLocation(vertex, startLine + interval * j, 50 + 150 * i + movePos * (j % 5));
+				setLocation(vertex, startLine + interval * j, 50 + 100 * i + movePos * (j % 5));
 				j++;
 			}
 			i++;
